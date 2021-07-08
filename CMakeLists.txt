@@ -29,8 +29,7 @@ project(
 # ##############################################################################
 
 include(cmake/add_gtest_executable.cmake)
-include(cmake/clang_format.cmake)
-include(cmake/cmake_format.cmake)
+include(cmake/code_format.cmake)
 
 # ##############################################################################
 # Build Settings Configuration

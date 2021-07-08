@@ -39,6 +39,22 @@ ctest
 
 > Notice: unit tests are available only in the "Debug" session.
 
+## Code style
+
+C++ & CMake source files may be formatted automatically via the following command:
+
+```
+cmake ..
+cmake --build . --target code_format
+```
+
+In case if file changes are unacceptable, only format validation may be done via the following command:
+
+```
+cmake ..
+cmake --build . --target code_format_check_only
+```
+
 # License
 
 The project licensed under the Apache License, Version 2.0; you may obtain a copy of the License at:
