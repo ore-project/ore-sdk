@@ -4,7 +4,7 @@
 
 The Ore SDK is a C++ library. It provides a simple API to parse, compile and translate Ore source files. There are three components in the Ore SDK: frontend, core and backend.
 
-# Build
+# Development
 
 Developing of this repository requires a specific docker image. The according image may be downloaded from the Docker Hub with the following command:
 
@@ -12,15 +12,32 @@ Developing of this repository requires a specific docker image. The according im
 docker pull oreproject/ore:sdk-build
 ```
 
+This docker image contains all required dependencies & allows starting development out of the box.
+
+## Build
+
 Use the following commands to build the repository:
 
 ```
 mkdir build
 docker run -it --rm -v$(pwd):/oresdk oreproject/ore:sdk-build sh
 cd /oresdk/build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake ..
 cmake --build . --parallel $(nproc)
 ```
+
+> Notice: the project's default build type is "Debug" if it's not set. Another build option is "Release".
+
+## Test
+
+When the project is built in the debug session, the unit test may be run via the following command:
+
+```
+cmake ..
+ctest
+```
+
+> Notice: unit tests are available only in the "Debug" session.
 
 # License
 

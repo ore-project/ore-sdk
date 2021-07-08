@@ -22,6 +22,23 @@ project(ore-sdk
         HOMEPAGE_URL oreproject.org
         LANGUAGES CXX)
 
+################################################################################
+# Include CMake-submodules
+################################################################################
+
+include(cmake/add_gtest_executable.cmake)
+
+################################################################################
+# Build Settings Configuration
+################################################################################
+
+if(NOT CMAKE_BUILD_TYPE MATCHES "Debug|Release")
+   set(CMAKE_BUILD_TYPE "Debug")
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+   option(BUILD_UNIT_TESTS "Build unit tests" ON)
+endif()
 
 ################################################################################
 # CXX Configuration

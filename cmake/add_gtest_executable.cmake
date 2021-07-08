@@ -14,15 +14,17 @@
 # limitations under the License.
 ################################################################################
 
-add_library(${CMAKE_PROJECT_NAME} SHARED sdk.cpp)
+if(BUILD_UNIT_TESTS)
+   enable_testing()
+   find_package(GTest REQUIRED)
+endif()
 
-target_include_directories(${CMAKE_PROJECT_NAME}
-    PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-)
-
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-    VERSION "${CMAKE_PROJECT_VERSION}"
-    SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
-)
-
-add_subdirectory(test)
+macro(add_gtest_executable TARGET SOURCE LIB)
+   if(BUILD_UNIT_TESTS)
+      add_executable(${TARGET} ${SOURCE})
+      target_link_libraries(${TARGET} ${LIB} gtest gtest_main)
+      add_test(NAME ${TARGET} COMMAND ${TARGET})
+      include(GoogleTest)
+      gtest_discover_tests(${TARGET})
+   endif()
+endmacro()
