@@ -16,13 +16,13 @@
 
 add_library(${CMAKE_PROJECT_NAME} SHARED sdk.cpp)
 
-target_include_directories(${CMAKE_PROJECT_NAME}
-    PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+target_include_directories(
+   ${CMAKE_PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
 )
 
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-    VERSION "${CMAKE_PROJECT_VERSION}"
-    SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
+set_target_properties(
+   ${CMAKE_PROJECT_NAME} PROPERTIES VERSION "${CMAKE_PROJECT_VERSION}"
+                                    SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
 )
 
 add_subdirectory(test)
