@@ -16,7 +16,6 @@
 
 #pragma once
 
-namespace ore::sdk
-{
+namespace ore::sdk {
    void dummy_function();
 };

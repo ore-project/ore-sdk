@@ -27,6 +27,7 @@ project(ore-sdk
 ################################################################################
 
 include(cmake/add_gtest_executable.cmake)
+include(cmake/clang_format.cmake)
 
 ################################################################################
 # Build Settings Configuration

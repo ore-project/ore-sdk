@@ -14,8 +14,8 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <ore/sdk/sdk.h>
 #include <gtest/gtest.h>
+#include <ore/sdk/sdk.h>
 
 TEST(dummy_test, foo)
 {

@@ -16,12 +16,11 @@
 
 #include <ore/sdk/sdk.h>
 
-namespace ore::sdk
-{
+namespace ore::sdk {
 
-void dummy_function()
-{
-   // do nothing
-}
+   void dummy_function()
+   {
+      // do nothing
+   }
 
 };
