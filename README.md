@@ -55,6 +55,18 @@ cmake ..
 cmake --build . --target code_format_check_only
 ```
 
+## Code analysis
+
+C++ source files may be analyzed by static code analyzer (currently: clang-tidy) via the following command:
+
+```
+cmake ..
+cmake --build . --target code_analysis
+
+```
+
+> Notice: clang-tidy runs in parallel, job count is defined by the `nproc`command's output.
+
 # License
 
 The project licensed under the Apache License, Version 2.0; you may obtain a copy of the License at:

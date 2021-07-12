@@ -25,13 +25,6 @@ project(
 )
 
 # ##############################################################################
-# Include CMake-submodules
-# ##############################################################################
-
-include(cmake/add_gtest_executable.cmake)
-include(cmake/code_format.cmake)
-
-# ##############################################################################
 # Build Settings Configuration
 # ##############################################################################
 
@@ -42,6 +35,24 @@ endif()
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
    option(BUILD_UNIT_TESTS "Build unit tests" ON)
 endif()
+
+# Generate the compile_commands.json file which is used by clang-tidy
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "Export compile commands")
+
+# ##############################################################################
+# Configure files for static code analysis
+# ##############################################################################
+
+list(APPEND CODE_ANALYSIS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+list(APPEND CODE_ANALYSIS_EXCLUDE "^.*/test/.*$")
+
+# ##############################################################################
+# Include CMake-submodules
+# ##############################################################################
+
+include(cmake/add_gtest_executable.cmake)
+include(cmake/code_analysis.cmake)
+include(cmake/code_format.cmake)
 
 # ##############################################################################
 # CXX Configuration
