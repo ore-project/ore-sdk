@@ -1,18 +1,20 @@
----
+﻿---
 BasedOnStyle: WebKit
-AccessModifierOffset: '0'
+AccessModifierOffset: '-3'
 AlignAfterOpenBracket: Align
-AlignConsecutiveAssignments: 'true'
-AlignConsecutiveDeclarations: 'false'
 AlignConsecutiveMacros: 'true'
+AlignConsecutiveAssignments: 'true'
+AlignConsecutiveBitFields: 'false'
+AlignConsecutiveDeclarations: 'true'
 AlignEscapedNewlines: Left
 AlignOperands: 'true'
 AlignTrailingComments: 'true'
 AllowAllArgumentsOnNextLine: 'false'
 AllowAllConstructorInitializersOnNextLine: 'false'
 AllowAllParametersOfDeclarationOnNextLine: 'false'
+AllowShortEnumsOnASingleLine: false
 AllowShortBlocksOnASingleLine: 'false'
-AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'true'
 AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: Inline
@@ -23,6 +25,7 @@ AlwaysBreakTemplateDeclarations: 'Yes'
 BinPackArguments: 'false'
 BinPackParameters: 'false'
 BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: WebKit
 BreakBeforeTernaryOperators: 'true'
 BreakConstructorInitializers: BeforeComma
 BreakInheritanceList: BeforeComma
@@ -36,7 +39,10 @@ Cpp11BracedListStyle: 'false'
 FixNamespaceComments: 'false'
 IncludeBlocks: Regroup
 IndentCaseLabels: 'true'
+IndentCaseBlocks: false
+IndentGotoLabels: true
 IndentPPDirectives: BeforeHash
+IndentExternBlock: NoIndent
 IndentWidth: '3'
 IndentWrappedFunctionNames: 'true'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
@@ -44,11 +50,13 @@ Language: Cpp
 MaxEmptyLinesToKeep: '1'
 NamespaceIndentation: All
 PenaltyBreakAssignment: '1'
+PenaltyBreakBeforeFirstCallParameter: 0
 PenaltyBreakComment: '1'
 PenaltyBreakFirstLessLess: '1'
 PenaltyBreakString: '1'
 PenaltyBreakTemplateDeclaration: '1'
 PenaltyExcessCharacter: '1'
+PenaltyReturnTypeOnItsOwnLine: 0
 PointerAlignment: Left
 ReflowComments: 'true'
 SortIncludes: 'true'
@@ -62,14 +70,17 @@ SpaceBeforeCtorInitializerColon: 'true'
 SpaceBeforeInheritanceColon: 'true'
 SpaceBeforeParens: Never
 SpaceBeforeRangeBasedForLoopColon: 'false'
+SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: 'false'
-SpacesBeforeTrailingComments: '3'
+SpacesBeforeTrailingComments: '1'
 SpacesInAngles: 'false'
-SpacesInContainerLiterals: 'true'
+SpacesInConditionalStatement: true
 SpacesInCStyleCastParentheses: 'false'
+SpacesInContainerLiterals: 'true'
 SpacesInParentheses: 'false'
 SpacesInSquareBrackets: 'false'
-Standard: Auto
+SpaceBeforeSquareBrackets: false
+Standard: c++20
 UseTab: Never
 
 ...

@@ -14,13 +14,23 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <ore/sdk/sdk.h>
+#include <ore/sdk/serializable.h>
 
-namespace ore::sdk {
+using namespace ore::sdk;
 
-   void dummy_function()
-   {
-      // do nothing
-   }
+serializable::serializable() = default;
 
-};
+serializable::~serializable() = default;
+
+std::string serializable::serialize() const
+{
+   return {};
+}
+
+void serializable::deserialize(const std::string& source)
+{
+}
+
+void serializable::deserialize(std::string&& source)
+{
+}

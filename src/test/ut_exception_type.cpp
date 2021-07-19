@@ -15,9 +15,13 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
-#include <ore/sdk/sdk.h>
+#include <ore/sdk/exception_type.h>
 
-TEST(dummy_test, foo)
+TEST(ut_exception_type, to_string)
 {
-   EXPECT_NO_THROW({ ore::sdk::dummy_function(); });
+   using namespace ore::sdk;
+
+   ASSERT_EQ("serialization", to_string(exception_type::serialization));
+   ASSERT_EQ("deserialization", to_string(exception_type::deserialization));
+   ASSERT_EQ("compilation", to_string(exception_type::compilation));
 }

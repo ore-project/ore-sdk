@@ -14,4 +14,26 @@
 # limitations under the License.
 ################################################################################
 
-add_subdirectory(sdk)
+set(TARGET ${CMAKE_PROJECT_NAME})
+
+add_library(
+   ${TARGET} SHARED
+   compilation_exception.cpp
+   compilation_exception_type.cpp
+   deserialization_exception.cpp
+   exception.cpp
+   exception_type.cpp
+   serializable.cpp
+   serialization_exception.cpp
+)
+
+target_include_directories(
+   ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+)
+
+set_target_properties(
+   ${TARGET} PROPERTIES VERSION "${CMAKE_PROJECT_VERSION}"
+                        SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
+)
+
+add_subdirectory(test)

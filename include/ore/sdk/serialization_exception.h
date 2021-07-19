@@ -16,6 +16,17 @@
 
 #pragma once
 
+#include <ore/sdk/exception.h>
+
 namespace ore::sdk {
-   void dummy_function();
+   class serialization_exception : public exception {
+   public:
+      serialization_exception(const std::string& what);
+      serialization_exception(std::string&& what);
+      serialization_exception(const serialization_exception& object);
+      serialization_exception(serialization_exception&& object) noexcept;
+
+      serialization_exception& operator=(const serialization_exception& object);
+      serialization_exception& operator=(serialization_exception&& object) noexcept;
+   };
 };

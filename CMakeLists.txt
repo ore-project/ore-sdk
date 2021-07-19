@@ -64,6 +64,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # LD fail on undefined symbols
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
 
+# Make all warnings into errors
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+
 # ##############################################################################
 
 add_subdirectory(src)
