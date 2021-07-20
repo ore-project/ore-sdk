@@ -14,23 +14,32 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <ore/sdk/serializable.h>
+#include <ore/sdk/serializer.h>
 
 using namespace ore::sdk;
 
-serializable::serializable() = default;
-
-serializable::~serializable() = default;
-
-std::string serializable::serialize() const
+std::vector<std::byte> ore::sdk::serialize(const std::string& source)
 {
-   return {};
+   const auto bytes_count = source.length();
+
+   auto bytes = std::vector<std::byte>{bytes_count};
+
+   for( size_t index = 0; index < bytes_count; ++index ) {
+      bytes[index] = static_cast<std::byte>(source[index]);
+   }
+
+   return bytes;
 }
 
-void serializable::deserialize(const std::string& source)
+std::string ore::sdk::deserialize(const std::vector<std::byte>& bytes)
 {
-}
+   const auto bytes_count = bytes.size();
 
-void serializable::deserialize(std::string&& source)
-{
+   auto source = std::string(bytes_count, '0');
+
+   for( size_t index = 0; index < bytes_count; ++index ) {
+      source[index] = static_cast<char>(bytes[index]);
+   }
+
+   return source;
 }

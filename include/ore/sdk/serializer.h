@@ -16,15 +16,36 @@
 
 #pragma once
 
-#include <string>
+#include <vector>
+#include <sstream>
 
 namespace ore::sdk {
-   struct serializable {
-      serializable();
-      virtual ~serializable() = 0;
 
-      virtual std::string serialize() const                      = 0;
-      virtual void        deserialize(const std::string& source) = 0;
-      virtual void        deserialize(std::string&& source)      = 0;
-   };
+   std::vector<std::byte> serialize(const std::string& source);
+   std::string deserialize(const std::vector<std::byte>& bytes);
+
+   template <class T>
+   concept ostreamable = requires(std::ostream& os, T t) { os << t; };
+
+   template<ostreamable T>
+   std::vector<std::byte> serialize(const T& object)
+   {
+      std::stringstream ss;
+      ss << object;
+
+      return ore::sdk::serialize(ss.str());
+   }
+
+   template <class T>
+   concept istreamable = requires(std::istream& is, T t) { is >> t; };
+
+   template<istreamable T>
+   T deserialize(const std::vector<std::byte>& bytes)
+   {
+      T object;
+      std::stringstream ss(deserialize(bytes));
+      ss >> object;
+
+      return object;
+   }
 };

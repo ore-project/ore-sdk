@@ -21,15 +21,13 @@ TEST(ut_sdk_include, basic)
 {
    // Test that all essence are accessible via ore/sdk.h include
 
-   struct serializable_child : ore::sdk::serializable {
-   };
-
    ore::sdk::exception_type             exception_type;
    ore::sdk::exception                  exception{ exception_type, "" };
    ore::sdk::deserialization_exception  deserialization_exception{ "" };
    ore::sdk::serialization_exception    serialization_exception{ "" };
    ore::sdk::compilation_exception_type compilation_exception_type;
    ore::sdk::compilation_exception compilation_exception{ compilation_exception_type, "", {} };
+   ore::sdk::serialize<std::string>({});
 
    EXPECT_TRUE(true); // Successfull build of this test, is it the validation
 }

@@ -15,7 +15,7 @@
 ################################################################################
 
 # cmake-format: off
-add_gtest_executable(ut_serializable ut_serializable.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_serializer ut_serializer.cpp ${CMAKE_PROJECT_NAME})
 add_gtest_executable(ut_sdk_include ut_sdk_include.cpp ${CMAKE_PROJECT_NAME})
 add_gtest_executable(ut_compilation_exception_type ut_compilation_exception_type.cpp ${CMAKE_PROJECT_NAME})
 add_gtest_executable(ut_exception_type ut_exception_type.cpp ${CMAKE_PROJECT_NAME})

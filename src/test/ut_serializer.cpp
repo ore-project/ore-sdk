@@ -14,12 +14,15 @@
  * limitations under the License.
  ******************************************************************************/
 
-#pragma once
-
-#include <ore/sdk/compilation_exception.h>
-#include <ore/sdk/compilation_exception_type.h>
-#include <ore/sdk/deserialization_exception.h>
-#include <ore/sdk/exception.h>
-#include <ore/sdk/exception_type.h>
+#include <gtest/gtest.h>
 #include <ore/sdk/serializer.h>
-#include <ore/sdk/serialization_exception.h>
+
+TEST(ut_serializer, serialize)
+{
+   EXPECT_NO_THROW({ ore::sdk::serialize<std::string>({}); });
+}
+
+TEST(ut_serializer, deserialize)
+{
+   EXPECT_NO_THROW({ ore::sdk::deserialize<std::string>({}); });
+}

@@ -23,7 +23,7 @@ add_library(
    deserialization_exception.cpp
    exception.cpp
    exception_type.cpp
-   serializable.cpp
+   serializer.cpp
    serialization_exception.cpp
 )
 
