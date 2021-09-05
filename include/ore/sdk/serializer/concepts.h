@@ -16,7 +16,8 @@
 
 #pragma once
 
-#include <sstream>
+#include <istream>
+#include <ostream>
 
 namespace ore::sdk {
 

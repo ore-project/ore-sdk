@@ -16,7 +16,10 @@
 
 #pragma once
 
+#include <ore/sdk/exception/deserialization_error.h>
+#include <ore/sdk/exception/serialization_error.h>
 #include <ore/sdk/serializer/concepts.h>
+#include <sstream>
 #include <vector>
 
 namespace ore::sdk {
@@ -28,7 +31,12 @@ template<ostreamable T>
 std::vector<std::byte> serialize(const T& object)
 {
    std::stringstream ss;
-   ss << object;
+
+   try {
+      ss << object;
+   } catch( const std::exception& exception ) {
+      throw serialization_error{ exception.what() };
+   }
 
    return ore::sdk::serialize(ss.str());
 }
@@ -38,7 +46,12 @@ T deserialize(const std::vector<std::byte>& bytes)
 {
    T                 object;
    std::stringstream ss(deserialize(bytes));
-   ss >> object;
+
+   try {
+      ss >> object;
+   } catch( const std::exception& exception ) {
+      throw deserialization_error{ exception.what() };
+   }
 
    return object;
 }
