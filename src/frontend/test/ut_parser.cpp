@@ -15,17 +15,21 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
-#include <ore/sdk/exception.h>
+#include <ore/sdk/frontend.h>
 
-TEST(ut_include, exception)
+#include <ore/sdk/exception/parse_error.h>
+
+TEST(ut_parser, empty_input)
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   EXPECT_THROW(ore::sdk::parse("", {}), ore::sdk::parse_error);
+}
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
+TEST(ut_parser, parse_with_error)
+{
+   EXPECT_THROW(ore::sdk::parse("", { "error" }), ore::sdk::parse_error);
+}
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+TEST(ut_parser, parse_with_success)
+{
+   EXPECT_NO_THROW({ ore::sdk::parse("", { "source" }); });
 }

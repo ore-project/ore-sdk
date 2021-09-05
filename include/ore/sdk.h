@@ -17,4 +17,5 @@
 #pragma once
 
 #include <ore/sdk/exception.h>
+#include <ore/sdk/frontend.h>
 #include <ore/sdk/serializer.h>

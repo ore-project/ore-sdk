@@ -18,7 +18,7 @@ set(TARGET "exception")
 
 add_library(
    ${TARGET} OBJECT compilation_error.cpp deserialization_error.cpp
-                    exception.cpp serialization_error.cpp
+                    exception.cpp serialization_error.cpp parse_error.cpp
 )
 
 target_include_directories(

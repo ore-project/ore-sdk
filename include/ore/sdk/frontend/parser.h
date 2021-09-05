@@ -14,18 +14,15 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <gtest/gtest.h>
-#include <ore/sdk/exception.h>
+#pragma once
 
-TEST(ut_include, exception)
-{
-   // Test that all essence are accessible via ore/sdk/exception.h include
+#include <ore/sdk/frontend/ast.h>
+#include <vector>
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
+namespace ore::sdk {
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+using source_file = std::vector<std::string>;
+
+ast parse(const std::string& file_name, const source_file& source);
+
 }

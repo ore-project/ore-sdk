@@ -14,18 +14,32 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <gtest/gtest.h>
-#include <ore/sdk/exception.h>
+#include <ore/sdk/frontend/ast.h>
 
-TEST(ut_include, exception)
+using namespace ore::sdk;
+
+std::istream& ore::sdk::operator>>(std::istream& istream, ast& /*tree*/)
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   char        c = 0;
+   std::string s;
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
+   // 10 because "ast-source"
+   // NOLINTNEXTLINE (cppcoreguidelines-avoid-magic-numbers)
+   for( unsigned int i = 0, size = 10; i < size; ++i ) {
+      istream >> c;
+      s += c;
+   }
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+   if( s != "ast-source" ) {
+      throw std::runtime_error{ "Wrong ast data!" };
+   }
+
+   return istream;
+}
+
+std::ostream& ore::sdk::operator<<(std::ostream& ostream, const ast& /*tree*/)
+{
+   ostream << "ast-source";
+
+   return ostream;
 }

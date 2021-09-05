@@ -14,11 +14,14 @@
 # limitations under the License.
 ################################################################################
 
-# cmake-format: off
-add_gtest_executable(ut_compilation_error ut_compilation_error.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_deserialization_error ut_deserialization_error.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_exception ut_exception.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_include_exception ut_include_exception.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_parse_error ut_parse_error.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_serialization_error ut_serialization_error.cpp ${CMAKE_PROJECT_NAME})
-# cmake-format: on
+set(TARGET "frontend")
+
+add_library(${TARGET} OBJECT ast.cpp parser.cpp)
+
+target_include_directories(
+   ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+)
+
+set_target_properties(${TARGET} PROPERTIES POSITION_INDEPENDENT_CODE True)
+
+add_subdirectory(test)

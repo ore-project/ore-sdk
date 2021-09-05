@@ -16,6 +16,7 @@
 
 add_subdirectory(exception)
 add_subdirectory(serializer)
+add_subdirectory(frontend)
 
 set(TARGET ${CMAKE_PROJECT_NAME})
 
@@ -34,6 +35,7 @@ set_target_properties(
 
 target_sources(
    ${TARGET} PRIVATE $<TARGET_OBJECTS:exception> $<TARGET_OBJECTS:serializer>
+                     $<TARGET_OBJECTS:frontend>
 )
 
 add_subdirectory(test)

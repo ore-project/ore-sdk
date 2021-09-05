@@ -15,17 +15,26 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
-#include <ore/sdk/exception.h>
+#include <ore/sdk/frontend.h>
 
-TEST(ut_include, exception)
+#include <ore/sdk/serializer.h>
+
+TEST(ut_ast, serialize)
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   ore::sdk::ast tree;
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
+   std::vector<std::byte> actual_data;
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+   EXPECT_NO_THROW({ actual_data = ore::sdk::serialize(tree); });
+
+   const auto actual_string = ore::sdk::deserialize(actual_data);
+
+   ASSERT_STREQ(actual_string.c_str(), "ast-source");
+}
+
+TEST(ut_ast, deserialize)
+{
+   const auto input_data = ore::sdk::serialize("ast-source");
+
+   EXPECT_NO_THROW({ ore::sdk::deserialize<ore::sdk::ast>(input_data); });
 }

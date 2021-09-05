@@ -15,10 +15,7 @@
 ################################################################################
 
 # cmake-format: off
-add_gtest_executable(ut_compilation_error ut_compilation_error.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_deserialization_error ut_deserialization_error.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_exception ut_exception.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_include_exception ut_include_exception.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_parse_error ut_parse_error.cpp ${CMAKE_PROJECT_NAME})
-add_gtest_executable(ut_serialization_error ut_serialization_error.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_ast ut_ast.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_include_frontend ut_include_frontend.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_parser ut_parser.cpp ${CMAKE_PROJECT_NAME})
 # cmake-format: on
