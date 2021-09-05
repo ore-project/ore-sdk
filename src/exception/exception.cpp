@@ -14,19 +14,29 @@
  * limitations under the License.
  ******************************************************************************/
 
-#pragma once
+#include <ore/sdk/exception/exception.h>
 
-#include <ore/sdk/exception.h>
+#include "helper.h"
 
-namespace ore::sdk {
-   class deserialization_exception : public exception {
-   public:
-      deserialization_exception(const std::string& what);
-      deserialization_exception(std::string&& what);
-      deserialization_exception(const deserialization_exception& object);
-      deserialization_exception(deserialization_exception&& object) noexcept;
+using namespace ore::sdk;
 
-      deserialization_exception& operator=(const deserialization_exception& object);
-      deserialization_exception& operator=(deserialization_exception&& object) noexcept;
-   };
-};
+exception::exception(const std::string& what_arg)
+: std::runtime_error{ what_arg }
+{
+   // do nothing
+}
+
+exception::exception(const char* what_arg)
+: std::runtime_error{ what_arg }
+{
+   // do nothing
+}
+
+exception::exception(const exception& other) noexcept = default;
+
+exception& exception::operator=(const exception& other) noexcept
+{
+   parrent_assign_operator<std::runtime_error>(this, other);
+
+   return *this;
+}

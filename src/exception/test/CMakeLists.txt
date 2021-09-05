@@ -14,21 +14,10 @@
 # limitations under the License.
 ################################################################################
 
-add_subdirectory(exception)
-
-set(TARGET ${CMAKE_PROJECT_NAME})
-
-add_library(${TARGET} SHARED serializer.cpp)
-
-target_include_directories(
-   ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-)
-
-set_target_properties(
-   ${TARGET} PROPERTIES VERSION "${CMAKE_PROJECT_VERSION}"
-                        SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
-)
-
-target_sources(${TARGET} PRIVATE $<TARGET_OBJECTS:exception>)
-
-add_subdirectory(test)
+# cmake-format: off
+add_gtest_executable(ut_compilation_error ut_compilation_error.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_deserialization_error ut_deserialization_error.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_exception ut_exception.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_include_exception ut_include_exception.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_serialization_error ut_serialization_error.cpp ${CMAKE_PROJECT_NAME})
+# cmake-format: on

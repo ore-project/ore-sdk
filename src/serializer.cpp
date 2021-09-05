@@ -22,7 +22,7 @@ std::vector<std::byte> ore::sdk::serialize(const std::string& source)
 {
    const auto bytes_count = source.length();
 
-   auto bytes = std::vector<std::byte>{bytes_count};
+   auto bytes = std::vector<std::byte>{ bytes_count };
 
    for( size_t index = 0; index < bytes_count; ++index ) {
       bytes[index] = static_cast<std::byte>(source[index]);

@@ -37,7 +37,7 @@ ConstructorInitializerIndentWidth: '0'
 ContinuationIndentWidth: '3'
 Cpp11BracedListStyle: 'false'
 FixNamespaceComments: 'false'
-IncludeBlocks: Regroup
+IncludeBlocks: Preserve
 IndentCaseLabels: 'true'
 IndentCaseBlocks: false
 IndentGotoLabels: true
@@ -48,7 +48,7 @@ IndentWrappedFunctionNames: 'true'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
 Language: Cpp
 MaxEmptyLinesToKeep: '1'
-NamespaceIndentation: All
+NamespaceIndentation: None
 PenaltyBreakAssignment: '1'
 PenaltyBreakBeforeFirstCallParameter: 0
 PenaltyBreakComment: '1'

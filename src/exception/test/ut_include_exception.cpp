@@ -14,19 +14,17 @@
  * limitations under the License.
  ******************************************************************************/
 
-#pragma once
-
+#include <gtest/gtest.h>
 #include <ore/sdk/exception.h>
 
-namespace ore::sdk {
-   class serialization_exception : public exception {
-   public:
-      serialization_exception(const std::string& what);
-      serialization_exception(std::string&& what);
-      serialization_exception(const serialization_exception& object);
-      serialization_exception(serialization_exception&& object) noexcept;
+TEST(ut_include, exception)
+{
+   // Test that all essence are accessible via ore/sdk/exception.h include
 
-      serialization_exception& operator=(const serialization_exception& object);
-      serialization_exception& operator=(serialization_exception&& object) noexcept;
-   };
-};
+   ore::sdk::exception             exception{ "" };
+   ore::sdk::compilation_error     compilation_error{ "" };
+   ore::sdk::serialization_error   serialization_error{ "" };
+   ore::sdk::deserialization_error deserialization_error{ "" };
+
+   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+}

@@ -14,17 +14,19 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <ore/sdk/exception_type.h>
+#pragma once
 
-using namespace ore::sdk;
+#include <stdexcept>
 
-std::string ore::sdk::to_string(const exception_type object)
-{
-   switch( object ) {
-      case exception_type::serialization: return "serialization";
-      case exception_type::deserialization: return "deserialization";
-      case exception_type::compilation: return "compilation";
-   }
+namespace ore::sdk {
 
-   return {}; // Disable build warning
+class exception : public std::runtime_error {
+public:
+   explicit exception(const std::string& what_arg);
+   explicit exception(const char* what_arg);
+   exception(const exception& other) noexcept;
+
+   exception& operator=(const exception& other) noexcept;
+};
+
 }

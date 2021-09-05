@@ -62,7 +62,6 @@ C++ source files may be analyzed by static code analyzer (currently: clang-tidy)
 ```
 cmake ..
 cmake --build . --target code_analysis
-
 ```
 
 > Notice: clang-tidy runs in parallel, job count is defined by the `nproc`command's output.

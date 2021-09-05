@@ -16,23 +16,7 @@
 
 #pragma once
 
-#include <ore/sdk/exception_type.h>
-#include <stdexcept>
-
-namespace ore::sdk {
-   class exception : public std::runtime_error {
-   public:
-      exception(const exception_type type, const std::string& what);
-      exception(const exception_type type, std::string&& what);
-      exception(const exception& object);
-      exception(exception&& object) noexcept;
-
-      exception& operator=(const exception& object);
-      exception& operator=(exception&& object) noexcept;
-
-      ore::sdk::exception_type exception_type() const;
-
-   private:
-      ore::sdk::exception_type m_exception_type;
-   };
-};
+#include <ore/sdk/exception/compilation_error.h>
+#include <ore/sdk/exception/deserialization_error.h>
+#include <ore/sdk/exception/exception.h>
+#include <ore/sdk/exception/serialization_error.h>

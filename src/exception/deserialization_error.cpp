@@ -14,14 +14,30 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <gtest/gtest.h>
-#include <ore/sdk/compilation_exception_type.h>
+#include <ore/sdk/exception/deserialization_error.h>
 
-TEST(ut_compilation_exception_type, to_string)
+#include "helper.h"
+
+using namespace ore::sdk;
+
+deserialization_error::deserialization_error(const std::string& what_arg)
+: exception{ what_arg }
 {
-   using namespace ore::sdk;
+   // do nothing
+}
 
-   ASSERT_EQ("parse", to_string(compilation_exception_type::parse));
-   ASSERT_EQ("compile", to_string(compilation_exception_type::compile));
-   ASSERT_EQ("translate", to_string(compilation_exception_type::translate));
+deserialization_error::deserialization_error(const char* what_arg)
+: exception{ what_arg }
+{
+   // do nothing
+}
+
+deserialization_error::deserialization_error(const deserialization_error& other) noexcept = default;
+
+deserialization_error&
+   deserialization_error::operator=(const deserialization_error& other) noexcept
+{
+   parrent_assign_operator<exception>(this, other);
+
+   return *this;
 }

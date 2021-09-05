@@ -14,21 +14,17 @@
 # limitations under the License.
 ################################################################################
 
-add_subdirectory(exception)
+set(TARGET "exception")
 
-set(TARGET ${CMAKE_PROJECT_NAME})
-
-add_library(${TARGET} SHARED serializer.cpp)
+add_library(
+   ${TARGET} OBJECT compilation_error.cpp deserialization_error.cpp
+                    exception.cpp serialization_error.cpp
+)
 
 target_include_directories(
    ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
 )
 
-set_target_properties(
-   ${TARGET} PROPERTIES VERSION "${CMAKE_PROJECT_VERSION}"
-                        SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
-)
-
-target_sources(${TARGET} PRIVATE $<TARGET_OBJECTS:exception>)
+set_target_properties(${TARGET} PROPERTIES POSITION_INDEPENDENT_CODE True)
 
 add_subdirectory(test)

@@ -14,17 +14,29 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <ore/sdk/compilation_exception_type.h>
+#include <ore/sdk/exception/serialization_error.h>
+
+#include "helper.h"
 
 using namespace ore::sdk;
 
-std::string ore::sdk::to_string(const compilation_exception_type object)
+serialization_error::serialization_error(const std::string& what_arg)
+: exception{ what_arg }
 {
-   switch( object ) {
-      case compilation_exception_type::parse: return "parse";
-      case compilation_exception_type::compile: return "compile";
-      case compilation_exception_type::translate: return "translate";
-   }
+   // do nothing
+}
 
-   return {}; // Disable build warning
+serialization_error::serialization_error(const char* what_arg)
+: exception{ what_arg }
+{
+   // do nothing
+}
+
+serialization_error::serialization_error(const serialization_error& other) noexcept = default;
+
+serialization_error& serialization_error::operator=(const serialization_error& other) noexcept
+{
+   parrent_assign_operator<exception>(this, other);
+
+   return *this;
 }

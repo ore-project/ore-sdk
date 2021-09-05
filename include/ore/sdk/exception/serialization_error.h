@@ -14,14 +14,19 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <gtest/gtest.h>
-#include <ore/sdk/exception_type.h>
+#pragma once
 
-TEST(ut_exception_type, to_string)
-{
-   using namespace ore::sdk;
+#include <ore/sdk/exception/exception.h>
 
-   ASSERT_EQ("serialization", to_string(exception_type::serialization));
-   ASSERT_EQ("deserialization", to_string(exception_type::deserialization));
-   ASSERT_EQ("compilation", to_string(exception_type::compilation));
+namespace ore::sdk {
+
+class serialization_error : public ore::sdk::exception {
+public:
+   explicit serialization_error(const std::string& what_arg);
+   explicit serialization_error(const char* what_arg);
+   serialization_error(const serialization_error& other) noexcept;
+
+   serialization_error& operator=(const serialization_error& other) noexcept;
+};
+
 }

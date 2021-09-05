@@ -16,15 +16,17 @@
 
 #pragma once
 
-#include <string>
+#include <ore/sdk/exception/exception.h>
 
 namespace ore::sdk {
-   enum class exception_type
-   {
-      serialization,
-      deserialization,
-      compilation
-   };
 
-   std::string to_string(const exception_type object);
+class deserialization_error : public ore::sdk::exception {
+public:
+   explicit deserialization_error(const std::string& what_arg);
+   explicit deserialization_error(const char* what_arg);
+   deserialization_error(const deserialization_error& other) noexcept;
+
+   deserialization_error& operator=(const deserialization_error& other) noexcept;
 };
+
+}
