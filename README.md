@@ -14,15 +14,27 @@ docker pull oreproject/ore:sdk-build
 
 This docker image contains all required dependencies & allows starting development out of the box.
 
+## Setup environment
+
+Use the following commands to run the docker container & the project configuration:
+
+```
+mkdir build
+docker run -it --rm -v$(pwd):/oresdk oreproject/ore:sdk-build sh
+```
+
+Execute the following commands inside docker container:
+
+```
+cd /oresdk/build
+cmake ..
+```
+
 ## Build
 
 Use the following commands to build the repository:
 
 ```
-mkdir build
-docker run -it --rm -v$(pwd):/oresdk oreproject/ore:sdk-build sh
-cd /oresdk/build
-cmake ..
 cmake --build . --parallel $(nproc)
 ```
 
@@ -33,7 +45,6 @@ cmake --build . --parallel $(nproc)
 When the project is built in the debug session, the unit test may be run via the following command:
 
 ```
-cmake ..
 ctest
 ```
 
@@ -44,14 +55,12 @@ ctest
 C++ & CMake source files may be formatted automatically via the following command:
 
 ```
-cmake ..
 cmake --build . --target code_format
 ```
 
 In case if file changes are unacceptable, only format validation may be done via the following command:
 
 ```
-cmake ..
 cmake --build . --target code_format_check_only
 ```
 
@@ -60,7 +69,6 @@ cmake --build . --target code_format_check_only
 C++ source files may be analyzed by static code analyzer (currently: clang-tidy) via the following command:
 
 ```
-cmake ..
 cmake --build . --target code_analysis
 ```
 
