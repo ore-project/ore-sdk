@@ -14,7 +14,14 @@
  * limitations under the License.
  ******************************************************************************/
 
-#pragma once
+#include <gtest/gtest.h>
+#include <ore/sdk/serializer.h>
 
-#include <ore/sdk/serializer/concepts.h>
-#include <ore/sdk/serializer/serializer.h>
+TEST(ut_include, sdk)
+{
+   // Test that all essence are accessible via ore/sdk/serializer.h include
+
+   ore::sdk::serialize<std::string>({});
+
+   EXPECT_TRUE(true); // Successfull build of this test, is it the validation
+}

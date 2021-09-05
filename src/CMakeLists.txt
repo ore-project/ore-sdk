@@ -15,12 +15,13 @@
 ################################################################################
 
 add_subdirectory(exception)
+add_subdirectory(serializer)
 
 set(TARGET ${CMAKE_PROJECT_NAME})
 
 configure_file(info.cpp.in info.cpp NEWLINE_STYLE UNIX)
 
-add_library(${TARGET} SHARED info.cpp serializer.cpp)
+add_library(${TARGET} SHARED info.cpp)
 
 target_include_directories(
    ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
@@ -31,6 +32,8 @@ set_target_properties(
                         SOVERSION "${CMAKE_PROJECT_VERSION_MAJOR}"
 )
 
-target_sources(${TARGET} PRIVATE $<TARGET_OBJECTS:exception>)
+target_sources(
+   ${TARGET} PRIVATE $<TARGET_OBJECTS:exception> $<TARGET_OBJECTS:serializer>
+)
 
 add_subdirectory(test)

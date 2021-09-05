@@ -17,4 +17,30 @@
 #pragma once
 
 #include <ore/sdk/serializer/concepts.h>
-#include <ore/sdk/serializer/serializer.h>
+#include <vector>
+
+namespace ore::sdk {
+
+std::vector<std::byte> serialize(const std::string& source);
+std::string            deserialize(const std::vector<std::byte>& bytes);
+
+template<ostreamable T>
+std::vector<std::byte> serialize(const T& object)
+{
+   std::stringstream ss;
+   ss << object;
+
+   return ore::sdk::serialize(ss.str());
+}
+
+template<istreamable T>
+T deserialize(const std::vector<std::byte>& bytes)
+{
+   T                 object;
+   std::stringstream ss(deserialize(bytes));
+   ss >> object;
+
+   return object;
+}
+
+}

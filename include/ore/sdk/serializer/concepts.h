@@ -16,5 +16,20 @@
 
 #pragma once
 
-#include <ore/sdk/serializer/concepts.h>
-#include <ore/sdk/serializer/serializer.h>
+#include <sstream>
+
+namespace ore::sdk {
+
+template<class T>
+concept ostreamable = requires(std::ostream& os, T t)
+{
+   os << t;
+};
+
+template<class T>
+concept istreamable = requires(std::istream& is, T t)
+{
+   is >> t;
+};
+
+}

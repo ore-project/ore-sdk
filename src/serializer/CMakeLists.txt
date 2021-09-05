@@ -14,6 +14,14 @@
 # limitations under the License.
 ################################################################################
 
-# cmake-format: off
-add_gtest_executable(ut_include_sdk ut_include_sdk.cpp ${CMAKE_PROJECT_NAME})
-# cmake-format: on
+set(TARGET "serializer")
+
+add_library(${TARGET} OBJECT serializer.cpp)
+
+target_include_directories(
+   ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+)
+
+set_target_properties(${TARGET} PROPERTIES POSITION_INDEPENDENT_CODE True)
+
+add_subdirectory(test)
