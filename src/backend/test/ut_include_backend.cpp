@@ -16,28 +16,12 @@
 
 #include <gtest/gtest.h>
 
-#include <ore/sdk.h>
+#include <ore/sdk/backend.h>
+#include <ore/sdk/exception/translation_error.h>
 
-TEST(ut_include, sdk)
+TEST(ut_include, backend)
 {
-   // Test that all essence are accessible via ore/sdk.h include
-
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
-   ore::sdk::link_error            link_error{ "" };
-   ore::sdk::translation_error     translation_error{ "" };
-
-   ore::sdk::serialize<std::string>({});
-
-   ore::sdk::ast ast;
-   EXPECT_THROW(ore::sdk::parse("", {}), ore::sdk::parse_error);
-
-   ore::sdk::opr opr;
-   EXPECT_THROW(ore::sdk::compile({}), ore::sdk::compilation_error);
-   EXPECT_THROW(ore::sdk::link({}), ore::sdk::link_error);
+   // Test that all essence are accessible via ore/sdk/backend.h include
 
    // Temporary representation of an invalid OPR object
    const ore::sdk::opr* invalid_object = nullptr;

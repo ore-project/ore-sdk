@@ -14,12 +14,18 @@
  * limitations under the License.
  ******************************************************************************/
 
-#pragma once
+#include <ore/sdk/backend/translator.h>
 
-#include <ore/sdk/exception/compilation_error.h>
-#include <ore/sdk/exception/deserialization_error.h>
-#include <ore/sdk/exception/exception.h>
-#include <ore/sdk/exception/link_error.h>
-#include <ore/sdk/exception/parse_error.h>
-#include <ore/sdk/exception/serialization_error.h>
 #include <ore/sdk/exception/translation_error.h>
+
+using namespace ore::sdk;
+
+std::string ore::sdk::translate(const opr& object)
+{
+   // Just for testing purposes
+   if( &object == nullptr ) {
+      throw translation_error{ "Input is empty, no asts are found!" };
+   }
+
+   return {};
+}

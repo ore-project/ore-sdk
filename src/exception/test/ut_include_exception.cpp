@@ -28,6 +28,7 @@ TEST(ut_include, exception)
    ore::sdk::deserialization_error deserialization_error{ "" };
    ore::sdk::parse_error           parse_error{ "" };
    ore::sdk::link_error            link_error{ "" };
+   ore::sdk::translation_error     translation_error{ "" };
 
    EXPECT_TRUE(true); // Successfull build of this test, is its the validation
 }

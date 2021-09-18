@@ -16,10 +16,17 @@
 
 #pragma once
 
-#include <ore/sdk/exception/compilation_error.h>
-#include <ore/sdk/exception/deserialization_error.h>
 #include <ore/sdk/exception/exception.h>
-#include <ore/sdk/exception/link_error.h>
-#include <ore/sdk/exception/parse_error.h>
-#include <ore/sdk/exception/serialization_error.h>
-#include <ore/sdk/exception/translation_error.h>
+
+namespace ore::sdk {
+
+class translation_error : public ore::sdk::exception {
+public:
+   explicit translation_error(const std::string& what_arg);
+   explicit translation_error(const char* what_arg);
+   translation_error(const translation_error& other) noexcept;
+
+   translation_error& operator=(const translation_error& other) noexcept;
+};
+
+}

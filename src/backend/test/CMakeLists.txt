@@ -14,23 +14,7 @@
 # limitations under the License.
 ################################################################################
 
-set(TARGET "exception")
-
-add_library(
-   ${TARGET} OBJECT
-   compilation_error.cpp
-   deserialization_error.cpp
-   exception.cpp
-   serialization_error.cpp
-   parse_error.cpp
-   link_error.cpp
-   translation_error.cpp
-)
-
-target_include_directories(
-   ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-)
-
-set_target_properties(${TARGET} PROPERTIES POSITION_INDEPENDENT_CODE True)
-
-add_subdirectory(test)
+# cmake-format: off
+add_gtest_executable(ut_include_backend ut_include_backend.cpp ${CMAKE_PROJECT_NAME})
+add_gtest_executable(ut_translator ut_translator.cpp ${CMAKE_PROJECT_NAME})
+# cmake-format: on

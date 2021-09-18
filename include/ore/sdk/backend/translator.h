@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <ore/sdk/exception/compilation_error.h>
-#include <ore/sdk/exception/deserialization_error.h>
-#include <ore/sdk/exception/exception.h>
-#include <ore/sdk/exception/link_error.h>
-#include <ore/sdk/exception/parse_error.h>
-#include <ore/sdk/exception/serialization_error.h>
-#include <ore/sdk/exception/translation_error.h>
+#include <ore/sdk/core/opr.h>
+
+namespace ore::sdk {
+
+std::string translate(const opr& object);
+
+}

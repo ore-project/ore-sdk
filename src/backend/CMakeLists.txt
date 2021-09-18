@@ -14,18 +14,9 @@
 # limitations under the License.
 ################################################################################
 
-set(TARGET "exception")
+set(TARGET "backend")
 
-add_library(
-   ${TARGET} OBJECT
-   compilation_error.cpp
-   deserialization_error.cpp
-   exception.cpp
-   serialization_error.cpp
-   parse_error.cpp
-   link_error.cpp
-   translation_error.cpp
-)
+add_library(${TARGET} OBJECT translator.cpp)
 
 target_include_directories(
    ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>

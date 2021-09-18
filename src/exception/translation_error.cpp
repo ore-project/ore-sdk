@@ -14,12 +14,29 @@
  * limitations under the License.
  ******************************************************************************/
 
-#pragma once
-
-#include <ore/sdk/exception/compilation_error.h>
-#include <ore/sdk/exception/deserialization_error.h>
-#include <ore/sdk/exception/exception.h>
-#include <ore/sdk/exception/link_error.h>
-#include <ore/sdk/exception/parse_error.h>
-#include <ore/sdk/exception/serialization_error.h>
 #include <ore/sdk/exception/translation_error.h>
+
+#include "helper.h"
+
+using namespace ore::sdk;
+
+translation_error::translation_error(const std::string& what_arg)
+: exception{ what_arg }
+{
+   // do nothing
+}
+
+translation_error::translation_error(const char* what_arg)
+: exception{ what_arg }
+{
+   // do nothing
+}
+
+translation_error::translation_error(const translation_error& other) noexcept = default;
+
+translation_error& translation_error::operator=(const translation_error& other) noexcept
+{
+   parrent_assign_operator<exception>(this, other);
+
+   return *this;
+}

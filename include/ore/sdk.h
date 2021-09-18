@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <ore/sdk/backend.h>
 #include <ore/sdk/core.h>
 #include <ore/sdk/exception.h>
 #include <ore/sdk/frontend.h>
