@@ -15,6 +15,8 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
+
+#include <ore/sdk/exception/parse_error.h>
 #include <ore/sdk/frontend.h>
 
 TEST(ut_include, frontend)
@@ -22,7 +24,7 @@ TEST(ut_include, frontend)
    // Test that all essence are accessible via ore/sdk/frontend.h include
 
    ore::sdk::ast ast;
-   ore::sdk::parse("", { "source" });
+   EXPECT_THROW(ore::sdk::parse("", {}), ore::sdk::parse_error);
 
    EXPECT_TRUE(true); // Successfull build of this test, is it the validation
 }

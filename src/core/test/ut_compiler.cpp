@@ -16,18 +16,36 @@
 
 #include <gtest/gtest.h>
 
-#include <ore/sdk/exception.h>
+#include <ore/sdk/core.h>
+#include <ore/sdk/exception/compilation_error.h>
+#include <ore/sdk/exception/link_error.h>
 
-TEST(ut_include, exception)
+TEST(ut_compiler, compiler_empty_input)
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   EXPECT_THROW(ore::sdk::compile({}), ore::sdk::compilation_error);
+}
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
-   ore::sdk::link_error            link_error{ "" };
+TEST(ut_compiler, compile_with_error)
+{
+   EXPECT_THROW(ore::sdk::compile({ {}, {} }), ore::sdk::compilation_error);
+}
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+TEST(ut_compiler, compile_with_success)
+{
+   EXPECT_NO_THROW({ ore::sdk::compile({ {} }); });
+}
+
+TEST(ut_compiler, link_empty_input)
+{
+   EXPECT_THROW(ore::sdk::link({}), ore::sdk::link_error);
+}
+
+TEST(ut_compiler, link_with_error)
+{
+   EXPECT_THROW(ore::sdk::link({ {}, {} }), ore::sdk::link_error);
+}
+
+TEST(ut_compiler, link_with_success)
+{
+   EXPECT_NO_THROW({ ore::sdk::link({ {} }); });
 }

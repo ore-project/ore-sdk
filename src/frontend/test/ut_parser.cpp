@@ -15,9 +15,9 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
-#include <ore/sdk/frontend.h>
 
 #include <ore/sdk/exception/parse_error.h>
+#include <ore/sdk/frontend.h>
 
 TEST(ut_parser, empty_input)
 {

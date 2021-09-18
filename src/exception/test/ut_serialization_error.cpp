@@ -15,6 +15,7 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
+
 #include <ore/sdk/exception/serialization_error.h>
 
 TEST(ut_serialization_error, string_initialization_constructor)

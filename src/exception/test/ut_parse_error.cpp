@@ -15,6 +15,7 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
+
 #include <ore/sdk/exception/parse_error.h>
 
 using highlight  = ore::sdk::compilation_error::highlight;

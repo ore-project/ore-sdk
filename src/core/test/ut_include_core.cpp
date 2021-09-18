@@ -16,18 +16,17 @@
 
 #include <gtest/gtest.h>
 
-#include <ore/sdk/exception.h>
+#include <ore/sdk/core.h>
+#include <ore/sdk/exception/compilation_error.h>
+#include <ore/sdk/exception/link_error.h>
 
-TEST(ut_include, exception)
+TEST(ut_include, core)
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   // Test that all essence are accessible via ore/sdk/core.h include
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
-   ore::sdk::link_error            link_error{ "" };
+   ore::sdk::opr opr;
+   EXPECT_THROW(ore::sdk::compile({}), ore::sdk::compilation_error);
+   EXPECT_THROW(ore::sdk::link({}), ore::sdk::link_error);
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+   EXPECT_TRUE(true); // Successfull build of this test, is it the validation
 }

@@ -15,6 +15,7 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
+
 #include <ore/sdk/exception/deserialization_error.h>
 
 TEST(ut_deserialization_error, string_initialization_constructor)

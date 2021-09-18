@@ -14,20 +14,32 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <gtest/gtest.h>
+#include <ore/sdk/core/opr.h>
 
-#include <ore/sdk/exception.h>
+using namespace ore::sdk;
 
-TEST(ut_include, exception)
+std::istream& ore::sdk::operator>>(std::istream& istream, opr& /*object*/)
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   char        c = 0;
+   std::string s;
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
-   ore::sdk::link_error            link_error{ "" };
+   // 10 because "opr-source"
+   // NOLINTNEXTLINE (cppcoreguidelines-avoid-magic-numbers)
+   for( unsigned int i = 0, size = 10; i < size; ++i ) {
+      istream >> c;
+      s += c;
+   }
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+   if( s != "opr-source" ) {
+      throw std::runtime_error{ "Wrong opr data!" };
+   }
+
+   return istream;
+}
+
+std::ostream& ore::sdk::operator<<(std::ostream& ostream, const opr& /*object*/)
+{
+   ostream << "opr-source";
+
+   return ostream;
 }

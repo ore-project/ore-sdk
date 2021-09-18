@@ -16,43 +16,43 @@
 
 #include <gtest/gtest.h>
 
-#include <ore/sdk/exception/exception.h>
+#include <ore/sdk/exception/link_error.h>
 
-TEST(ut_exception, string_initialization_constructor)
+TEST(ut_link_error, string_initialization_constructor)
 {
    const auto expected_what = std::string{ "xxx" };
 
-   ore::sdk::exception exception{ expected_what };
+   ore::sdk::link_error exception{ expected_what };
 
    ASSERT_STREQ(expected_what.c_str(), exception.what());
 }
 
-TEST(ut_exception, cstring_initialization_constructor)
+TEST(ut_link_error, cstring_initialization_constructor)
 {
    const auto expected_what = "xxx";
 
-   ore::sdk::exception exception{ expected_what };
+   ore::sdk::link_error exception{ expected_what };
 
    ASSERT_STREQ(expected_what, exception.what());
 }
 
-TEST(ut_exception, copy_constructor)
+TEST(ut_link_error, copy_constructor)
 {
    const auto expected_what = std::string{ "xxx" };
 
-   ore::sdk::exception exception_1{ expected_what };
-   ore::sdk::exception exception_2{ exception_1 };
+   ore::sdk::link_error exception_1{ expected_what };
+   ore::sdk::link_error exception_2{ exception_1 };
 
    ASSERT_STREQ(exception_1.what(), exception_2.what());
 }
 
-TEST(ut_exception, assignment_operator)
+TEST(ut_link_error, assignment_operator)
 {
    const auto expected_what     = std::string{ "xxx" };
    const auto not_expected_what = std::string{ "yyy" };
 
-   ore::sdk::exception exception_1{ expected_what };
-   ore::sdk::exception exception_2{ not_expected_what };
+   ore::sdk::link_error exception_1{ expected_what };
+   ore::sdk::link_error exception_2{ not_expected_what };
 
    exception_2 = exception_1;
 

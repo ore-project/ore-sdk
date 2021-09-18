@@ -15,8 +15,8 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
-#include <ore/sdk/frontend.h>
 
+#include <ore/sdk/frontend.h>
 #include <ore/sdk/serializer.h>
 
 TEST(ut_ast, serialize)

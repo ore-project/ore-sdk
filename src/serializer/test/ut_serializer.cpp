@@ -15,6 +15,7 @@
  ******************************************************************************/
 
 #include <gtest/gtest.h>
+
 #include <ore/sdk/serializer.h>
 
 class Object {

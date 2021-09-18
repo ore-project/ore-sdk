@@ -14,20 +14,29 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <gtest/gtest.h>
+#include <ore/sdk/exception/link_error.h>
 
-#include <ore/sdk/exception.h>
+#include "helper.h"
 
-TEST(ut_include, exception)
+using namespace ore::sdk;
+
+link_error::link_error(const std::string& what_arg)
+: exception{ what_arg }
 {
-   // Test that all essence are accessible via ore/sdk/exception.h include
+   // do nothing
+}
 
-   ore::sdk::exception             exception{ "" };
-   ore::sdk::compilation_error     compilation_error{ "" };
-   ore::sdk::serialization_error   serialization_error{ "" };
-   ore::sdk::deserialization_error deserialization_error{ "" };
-   ore::sdk::parse_error           parse_error{ "" };
-   ore::sdk::link_error            link_error{ "" };
+link_error::link_error(const char* what_arg)
+: exception{ what_arg }
+{
+   // do nothing
+}
 
-   EXPECT_TRUE(true); // Successfull build of this test, is its the validation
+link_error::link_error(const link_error& other) noexcept = default;
+
+link_error& link_error::operator=(const link_error& other) noexcept
+{
+   parrent_assign_operator<exception>(this, other);
+
+   return *this;
 }
