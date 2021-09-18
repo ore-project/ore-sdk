@@ -16,6 +16,10 @@
 
 #pragma once
 
-#include <ore/sdk/frontend/ast.h>
-#include <ore/sdk/frontend/parser.h>
-#include <ore/sdk/frontend/types.h>
+#include <vector>
+
+namespace ore::sdk {
+
+using source_file = std::vector<std::string>;
+
+}

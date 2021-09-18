@@ -17,11 +17,9 @@
 #pragma once
 
 #include <ore/sdk/frontend/ast.h>
-#include <vector>
+#include <ore/sdk/frontend/types.h>
 
 namespace ore::sdk {
-
-using source_file = std::vector<std::string>;
 
 ast parse(const std::string& file_name, const source_file& source);
 
