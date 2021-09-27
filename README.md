@@ -9,10 +9,10 @@ The Ore SDK is a C++ library. It provides a simple API to parse, compile and tra
 Building and further development of this repository is easier in a specific docker image. The according image may be downloaded from the Docker Hub with the following command:
 
 ```
-docker pull oreproject/ore:sdk-build
+docker pull oreproject/sdk-dev
 ```
 
-> Notice: This docker image contains all required dependencies & allows starting build & development out of the box.
+> Notice: this docker image contains all required dependencies & allows starting build & development out of the box. Also, each release has a specific docker image with the according tag name.
 
 Use the following commands to run the docker container & the project configuration:
 
@@ -89,6 +89,16 @@ cmake --build . --target code_analysis
 ```
 
 > Notice: clang-tidy runs in parallel, job count is defined by the `nproc` command's output.
+
+# Versioning
+
+All Ore projects including this one use one-to-one versioning. This means, that the version number is common for all Ore projects.
+
+The major version always brings incompatibility between projects and defines releases.
+
+The minor version of the project may be skipped if nothing were changed, it increases if the incompatibility between projects is reached.
+
+The patch version never brings incompatibility. It may be skipped as well as the minor version.
 
 # License
 
