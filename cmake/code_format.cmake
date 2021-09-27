@@ -18,7 +18,7 @@ find_program(clang-format NAMES clang-format REQUIRED)
 find_program(cmake-format NAMES cmake-format REQUIRED)
 
 set(CXX_FILE_EXTENSIONS "C|c|c++|cc|cpp|cxx|h|H|h++|hh|hpp|hxx")
-set(CXX_FILE_REGEX ".*\\.(${CXX_FILE_EXTENSIONS})$")
+set(CXX_FILE_REGEX ".*\\.(${CXX_FILE_EXTENSIONS})(\\.in)*$")
 set(CXX_FIND_INC "-regex '${CXX_FILE_REGEX}'")
 set(CXX_FIND_EXC "-not -path '${CMAKE_BINARY_DIR}/*'")
 set(CXX_FIND_CLI "find ${CMAKE_SOURCE_DIR} ${CXX_FIND_INC} ${CXX_FIND_EXC}")
@@ -26,7 +26,7 @@ string(REPLACE "|" "\\|" CXX_FIND_CLI ${CXX_FIND_CLI})
 string(REPLACE "(" "\\(" CXX_FIND_CLI ${CXX_FIND_CLI})
 string(REPLACE ")" "\\)" CXX_FIND_CLI ${CXX_FIND_CLI})
 
-set(CMAKE_FILE_REGEX ".*(CMakeLists\\.txt|\\.cmake)$")
+set(CMAKE_FILE_REGEX ".*(CMakeLists\\.txt|\\.cmake)(\\.in)*$")
 set(CMAKE_FIND_INC "-regex '${CMAKE_FILE_REGEX}'")
 set(CMAKE_FIND_EXC "-not -path '${CMAKE_BINARY_DIR}/*'")
 set(CMAKE_FIND_CLI

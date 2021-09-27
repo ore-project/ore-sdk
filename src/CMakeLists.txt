@@ -22,9 +22,9 @@ add_subdirectory(backend)
 
 set(TARGET ${CMAKE_PROJECT_NAME})
 
-configure_file(info.cpp.in info.cpp NEWLINE_STYLE UNIX)
+configure_file(version.cpp.in version.cpp NEWLINE_STYLE UNIX)
 
-add_library(${TARGET} SHARED info.cpp)
+add_library(${TARGET} SHARED version.cpp)
 
 target_include_directories(
    ${TARGET} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>

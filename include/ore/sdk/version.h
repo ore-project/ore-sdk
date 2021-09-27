@@ -14,13 +14,14 @@
  * limitations under the License.
  ******************************************************************************/
 
-#include <ore/sdk/info.h>
+#pragma once
 
 namespace ore::sdk {
 
-const char* version = "${CMAKE_PROJECT_VERSION}";
-const unsigned int version_major = ${CMAKE_PROJECT_VERSION_MAJOR};
-const unsigned int version_minor = ${CMAKE_PROJECT_VERSION_MINOR};
-const unsigned int version_patch = ${CMAKE_PROJECT_VERSION_PATCH};
+extern const char*        name;
+extern const char*        version;
+extern const unsigned int version_major;
+extern const unsigned int version_minor;
+extern const unsigned int version_patch;
 
 }
