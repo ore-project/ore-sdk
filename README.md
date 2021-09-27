@@ -52,6 +52,40 @@ cmake --install .
 
 > Notice: only one project version may be installed on the system at the same time.
 
+# Using
+
+In order to use the Ore SDK library in a project:
+ - include header(s) from the `ore/sdk` directory;
+ - link the library with an executable.
+
+Usage example in C++ sources:
+
+```c++
+#include <iostream>
+#include <ore/sdk/version.h>
+
+int main()
+{
+   std::cout << ore::sdk::name << " - " << ore::sdk::version << std::endl;
+   return 0;
+}
+```
+
+Usage example in CMake sources:
+
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project("example" LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+find_package(ore-sdk REQUIRED)
+
+add_executable(${CMAKE_PROJECT_NAME} main.cpp)
+target_link_Libraries(${CMAKE_PROJECT_NAME} ore-sdk)
+```
+
 # Development
 
 Use the following keynotes for standardization of all changes.
