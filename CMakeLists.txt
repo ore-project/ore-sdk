@@ -28,13 +28,18 @@ project(
 # Build Settings Configuration
 # ##############################################################################
 
+# Set default build type
 if(NOT CMAKE_BUILD_TYPE MATCHES "Debug|Release")
-   set(CMAKE_BUILD_TYPE "Debug")
+   set(CMAKE_BUILD_TYPE "Release")
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
    option(BUILD_UNIT_TESTS "Build unit tests" ON)
+else()
+   option(BUILD_UNIT_TESTS "Build unit tests" OFF)
 endif()
+
+option(UNIT_TESTS_DETAILED_REPORT "Print results of test cases" OFF)
 
 # Generate the compile_commands.json file which is used by clang-tidy
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "Export compile commands")
@@ -47,7 +52,14 @@ list(APPEND CODE_ANALYSIS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
 list(APPEND CODE_ANALYSIS_EXCLUDE "^.*/test/.*$")
 
 # ##############################################################################
-# Include CMake-submodules
+# Include CMake modules
+# ##############################################################################
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+# ##############################################################################
+# Include CMake submodules
 # ##############################################################################
 
 include(cmake/add_gtest_executable.cmake)

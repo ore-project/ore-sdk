@@ -14,19 +14,8 @@
 # limitations under the License.
 ################################################################################
 
-if(BUILD_UNIT_TESTS)
-   enable_testing()
-   find_package(GTest REQUIRED)
-endif()
+@PACKAGE_INIT@
 
-macro(add_gtest_executable TARGET SOURCE LIB)
-   if(BUILD_UNIT_TESTS)
-      add_executable(${TARGET} ${SOURCE})
-      target_link_libraries(${TARGET} ${LIB} gtest gtest_main)
-      add_test(NAME ${TARGET} COMMAND ${TARGET})
-      include(GoogleTest)
-      if(UNIT_TESTS_DETAILED_REPORT)
-         gtest_discover_tests(${TARGET})
-      endif()
-   endif()
-endmacro()
+set_and_check(@TARGET@_INCLUDE_DIRS @CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@)
+set_and_check(@TARGET@_LIBRARY_DIRS @CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@)
+set(@TARGET@_LIBRARIES @TARGET@)

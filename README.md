@@ -4,17 +4,15 @@
 
 The Ore SDK is a C++ library. It provides a simple API to parse, compile and translate Ore source files. There are three components in the Ore SDK: frontend, core and backend.
 
-# Development
+# Setup environment
 
-Developing of this repository requires a specific docker image. The according image may be downloaded from the Docker Hub with the following command:
+Building and further development of this repository is easier in a specific docker image. The according image may be downloaded from the Docker Hub with the following command:
 
 ```
 docker pull oreproject/ore:sdk-build
 ```
 
-This docker image contains all required dependencies & allows starting development out of the box.
-
-## Setup environment
+> Notice: This docker image contains all required dependencies & allows starting build & development out of the box.
 
 Use the following commands to run the docker container & the project configuration:
 
@@ -30,7 +28,9 @@ cd /oresdk/build
 cmake ..
 ```
 
-## Build
+> Notice: the default build type is `Release`, use `-DCMAKE_BUILD_TYPE=Debug` for development purposes.
+
+# Build
 
 Use the following commands to build the repository:
 
@@ -39,6 +39,22 @@ cmake --build . --parallel $(nproc)
 ```
 
 > Notice: the project's default build type is "Debug" if it's not set. Another build option is "Release".
+
+# Install
+
+Use the following commands to build the repository:
+
+```
+cmake --install .
+```
+
+> Notice: the project need to be built before installation.
+
+> Notice: only one project version may be installed on the system at the same time.
+
+# Development
+
+Use the following keynotes for standardization of all changes.
 
 ## Test
 
@@ -72,7 +88,7 @@ C++ source files may be analyzed by static code analyzer (currently: clang-tidy)
 cmake --build . --target code_analysis
 ```
 
-> Notice: clang-tidy runs in parallel, job count is defined by the `nproc`command's output.
+> Notice: clang-tidy runs in parallel, job count is defined by the `nproc` command's output.
 
 # License
 
